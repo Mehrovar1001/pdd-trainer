@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ПДД 2026">
+<meta name="theme-color" content="#0f172a">
+<title>ПДД Тренажёр 2026</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <button id="backBtn" class="icon-btn" aria-label="Назад" hidden>
+      <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="title">ПДД Тренажёр</div>
+    <div id="topRight"></div>
+  </header>
+  <main id="view"></main>
+</div>
+<div id="zoom"><img alt=""></div>
+<div id="confirmModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-icon">⚠️</div>
+    <div class="modal-title" id="confirmTitle">Сброс прогресса</div>
+    <div class="modal-text" id="confirmMessage">Сбросить весь пройденный прогресс, статистику и список ошибок, чтобы начать обучение заново?</div>
+    <div class="modal-actions">
+      <button id="confirmCancelBtn" class="btn-secondary">Отмена</button>
+      <button id="confirmOkBtn" class="btn-danger">Да, сбросить всё</button>
+    </div>
+  </div>
+</div>
+<div id="toast" class="toast-box"></div>
+<canvas id="confetti"></canvas>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>
